@@ -3,7 +3,10 @@ import subprocess
 import json
 from pyvis.network import Network
 import openpyxl
-import sys
+import sys 
+from contextlib import redirect_stdout
+import os
+
 
 # Step 1: Read Excel File
 file_path = sys.argv[1]
@@ -110,7 +113,7 @@ try:
     output_2 = result_2.stdout
     output_2 = output_2.strip()
     output_2 = output_2.strip("`")
-    print(output_2)
+    #print(output_2)
    
     
     # Convert the JSON output to a Python dictionary
@@ -125,7 +128,7 @@ try:
         #print(f"Relationships: {relationships}")
 
         # Initialize a Directed Graph with better spacing
-        net = Network(notebook=True, height="750px", width="100%", directed=True)
+        net = Network(notebook=True, height="750px", width="100%", directed=True, cdn_resources='in_line')
         
         net.barnes_hut()
         net.toggle_physics(True)
@@ -167,15 +170,18 @@ try:
         # Show the network
         # Save the generated HTML in the public directory
         try:
-          net.show('public/entity_network.html')
+          with open(os.devnull, 'w') as fnull:
+            with redirect_stdout(fnull):
+                net.show('public/entity_network.html')
+          #net.show('public/entity_network.html')
         except Exception as e:
             response = {
         "result": None,
         "networkFile": None,
         "error": str(e)  # Send error message
     }
-    print(json.dumps(response))
-    sys.exit()
+        
+        sys.exit()
 
 except subprocess.CalledProcessError as e:
     print("Error in subprocess:", e.stderr)
