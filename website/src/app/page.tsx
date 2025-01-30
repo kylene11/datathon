@@ -65,7 +65,7 @@ const Home: React.FC = () => {
 
   return (
     <div className="container mx-auto p-8 bg-gray-50 rounded-lg shadow-md max-w-2xl mt-5">
-      <h1 className="text-3xl font-semibold text-center text-gray-800 mb-6">File Upload and Processing</h1>
+      <h1 className="text-3xl font-semibold text-center text-gray-800 mb-6">Data Upload and Processing</h1>
       
       <div className="mb-4">
         <label htmlFor="option" className="block text-lg font-medium text-gray-700">Select Option:</label>
