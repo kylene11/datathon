@@ -79,6 +79,7 @@ try:
     output_2 = result_2.stdout
     output_2 = output_2.strip()
     output_2 = output_2.strip("`")
+    output_2 = output_2.strip(",")
     print("Ollama Output for Prompt 2:", output_2)
     
     output_2_dict = json.loads(output_2)

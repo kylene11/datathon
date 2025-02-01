@@ -114,6 +114,7 @@ try:
     output_2 = result_2.stdout
     output_2 = output_2.strip()
     output_2 = output_2.strip("`")
+    output_2 = output_2.strip(",")
     print(output_2)
    
     
