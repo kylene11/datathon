@@ -107,7 +107,7 @@ const Home: React.FC = () => {
       )}
       {selectedOption === 'test' && (
         <div className="mb-4">
-          <label htmlFor="userInput" className="block text-lg font-medium text-gray-700">Enter text:</label>
+          <label htmlFor="userInput" className="block text-lg font-medium text-gray-700">Enter Text:</label>
           <textarea
             id="userInput"
             value={userInput}
