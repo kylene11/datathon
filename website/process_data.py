@@ -7,6 +7,7 @@ import sys
 from contextlib import redirect_stdout
 import os
 
+os.environ['PYTHONIOENCODING'] = 'utf-8'
 
 # Step 1: Read Excel File
 file_path = sys.argv[1]
@@ -113,7 +114,7 @@ try:
     output_2 = result_2.stdout
     output_2 = output_2.strip()
     output_2 = output_2.strip("`")
-    #print(output_2)
+    print(output_2)
    
     
     # Convert the JSON output to a Python dictionary
@@ -180,7 +181,7 @@ try:
         "networkFile": None,
         "error": str(e)  # Send error message
     }
-        
+        print(json.dumps(response))
         sys.exit()
 
 except subprocess.CalledProcessError as e:

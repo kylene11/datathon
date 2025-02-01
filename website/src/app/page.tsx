@@ -38,6 +38,7 @@ const Home: React.FC = () => {
       const response = await axios.post('/api/analyze', form);
       console.log(response.data)
       console.log(response.data.error)
+      console.log(response.data.result)
       if (response.data.result.includes('JSON Decode Error:')) {
         // If specific error found, set state to indicate the error
         setJsonDecodeError(true);

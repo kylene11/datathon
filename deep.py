@@ -2,6 +2,9 @@ import pandas as pd
 import subprocess
 import json
 from pyvis.network import Network
+import os
+
+os.environ['PYTHONIOENCODING'] = 'utf-8'
 
 # Step 1: Read Excel File
 file_path = "wikileaks_parsed.xlsx"

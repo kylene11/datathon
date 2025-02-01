@@ -27,7 +27,8 @@ const analyzeData = (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     // Run the Python script with the provided file and user input
-    const pythonProcess = spawn('python3', ['process_data.py', filePath, userInput]);
+    const pythonCmd = process.platform === "win32" ? "python" : "python3";
+    const pythonProcess = spawn(pythonCmd, ['process_data.py', filePath, userInput]);
 
     let result = '';
     pythonProcess.stdout.on('data', (data) => {
