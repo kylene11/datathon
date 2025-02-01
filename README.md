@@ -16,3 +16,6 @@ cd website
 npm i # install packages
 npm run dev # run local dev server
 ```
+
+## Link to Demo Video:
+>https://www.youtube.com/watch?v=HzIVXq82QYM
