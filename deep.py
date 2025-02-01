@@ -4,7 +4,8 @@ import json
 from pyvis.network import Network
 import os
 
-os.environ['PYTHONIOENCODING'] = 'utf-8'
+env = os.environ.copy()
+env['PYTHONIOENCODING'] = 'utf-8'
 
 # Step 1: Read Excel File
 file_path = "wikileaks_parsed.xlsx"
@@ -71,11 +72,11 @@ Example structure (do not copy it directly):
 """
 
 try:
-    result = subprocess.run(command, input=prompt, capture_output=True, text=True, check=True, encoding='utf-8')
+    result = subprocess.run(command, input=prompt, capture_output=True, text=True, check=True, env=env)
     output = result.stdout
     #print("Ollama Output:", output)  # Debugging line to examine raw output
     
-    result_2 = subprocess.run(command, input=prompt_2, capture_output=True, text=True, check=True, encoding='utf-8')
+    result_2 = subprocess.run(command, input=prompt_2, capture_output=True, text=True, check=True, env=env)
     output_2 = result_2.stdout
     output_2 = output_2.strip()
     output_2 = output_2.strip("`")
@@ -88,7 +89,7 @@ except subprocess.CalledProcessError as e:
     print("Error:", e.stderr)
     exit()
 
-# Step 3: Parse and Create Network Graph from Relationships
+
 # Step 3: Parse and Create Network Graph from Relationships
 if isinstance(output_2_dict, dict):
     entities = output_2_dict.get('entities', [])

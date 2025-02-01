@@ -7,7 +7,8 @@ import sys
 from contextlib import redirect_stdout
 import os
 
-os.environ['PYTHONIOENCODING'] = 'utf-8'
+env = os.environ.copy()
+env['PYTHONIOENCODING'] = 'utf-8'
 
 # Step 1: Read Excel File
 file_path = sys.argv[1]
@@ -105,17 +106,17 @@ Example structure (do not copy it directly):
 
 try:
     # Run the first subprocess for entity extraction
-    result = subprocess.run(command, input=prompt, capture_output=True, text=True, check=True)
+    result = subprocess.run(command, input=prompt, capture_output=True, text=True, check=True, env=env)
     output = result.stdout
     print(output)
 
     # Run the second subprocess for JSON output with relationships
-    result_2 = subprocess.run(command, input=prompt_2, capture_output=True, text=True, check=True)
+    result_2 = subprocess.run(command, input=prompt_2, capture_output=True, text=True, check=True, env=env)
     output_2 = result_2.stdout
     output_2 = output_2.strip()
     output_2 = output_2.strip("`")
     output_2 = output_2.strip(",")
-    print(output_2)
+    #print(output_2)
    
     
     # Convert the JSON output to a Python dictionary
@@ -182,7 +183,7 @@ try:
         "networkFile": None,
         "error": str(e)  # Send error message
     }
-        print(json.dumps(response))
+        
         sys.exit()
 
 except subprocess.CalledProcessError as e:
