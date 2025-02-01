@@ -68,11 +68,11 @@ Example structure (do not copy it directly):
 """
 
 try:
-    result = subprocess.run(command, input=prompt, capture_output=True, text=True, check=True)
+    result = subprocess.run(command, input=prompt, capture_output=True, text=True, check=True, encoding='utf-8')
     output = result.stdout
     #print("Ollama Output:", output)  # Debugging line to examine raw output
     
-    result_2 = subprocess.run(command, input=prompt_2, capture_output=True, text=True, check=True)
+    result_2 = subprocess.run(command, input=prompt_2, capture_output=True, text=True, check=True, encoding='utf-8')
     output_2 = result_2.stdout
     output_2 = output_2.strip()
     output_2 = output_2.strip("`")
